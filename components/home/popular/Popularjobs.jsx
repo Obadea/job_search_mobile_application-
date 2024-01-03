@@ -21,19 +21,39 @@ const Popularjobs = () => {
   });
 
   const [selectedJob, setSelectedJob] = useState();
+  const [visibleItems, setVisibleItems] = useState(4);
 
   const handleCardPress = (item) => {
     router.push(`/job-details/${item.job_id}`);
     setSelectedJob(item.job_id);
   };
 
+  // const data = [
+  //   1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 19, 20, 1, 2, 3, 4, 5,
+  //   6, 1, 2, 3, 4,
+  // ];
+
+  const handleLoadMore = () => {
+    if (visibleItems + 4 <= data.length) {
+      // If there are more items to show, increase the count
+      setVisibleItems(visibleItems + 3);
+    } else {
+      // If there are no more items, set visibleItems to the total item count
+      setVisibleItems(data.length);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Popular jobs</Text>
-        <TouchableOpacity>
-          <Text style={styles.headerBtn}>Show all</Text>
-        </TouchableOpacity>
+        {data?.length != visibleItems && (
+          <TouchableOpacity>
+            <Text style={styles.headerBtn} onPress={handleLoadMore}>
+              Show more
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
 
       <View style={styles.cardsContainer}>
@@ -43,7 +63,7 @@ const Popularjobs = () => {
           <Text style={{ color: "#fff" }}>Something went wrong</Text>
         ) : (
           <FlatList
-            data={data}
+            data={data?.slice(0, visibleItems)}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
