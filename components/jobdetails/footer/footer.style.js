@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
+    paddingBottom: 22,
   },
   likeBtn: {
     width: 55,

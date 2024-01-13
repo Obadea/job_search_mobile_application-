@@ -1,4 +1,6 @@
 import { Stack, useRouter, useSearchParams } from "expo-router";
+import { BlurView } from "react-native-blur";
+import { BlurViewProperties } from "react-native-blur";
 import { useCallback, useState } from "react";
 import {
   View,
@@ -97,7 +99,12 @@ const JobDetails = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: COLORS.lightWhite,
+      }}
+    >
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
@@ -120,7 +127,6 @@ const JobDetails = () => {
           headerTitle: "",
         }}
       />
-
       <>
         <ScrollView
           showsVerticalScrollIndicator={false}
