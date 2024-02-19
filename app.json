@@ -5,6 +5,9 @@
       "bundler": "metro"
     },
     "name": "jobsift",
-    "slug": "jobsift"
+    "slug": "jobsift",
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
